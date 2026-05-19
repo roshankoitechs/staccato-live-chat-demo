@@ -738,10 +738,12 @@ button {
 
 .mobile-thread-header {
   justify-content: flex-start;
+  min-width: 0;
 }
 
 .mobile-thread-header > div {
   flex: 1;
+  min-width: 0;
 }
 
 .mobile-thread-header > button:first-child {
@@ -754,6 +756,152 @@ button {
   border-radius: 8px;
   background: transparent;
   color: var(--ink);
+}
+
+.mobile-thread-screen {
+  display: flex;
+  flex-direction: column;
+  height: 590px;
+  min-height: 0;
+}
+
+.mobile-thread-screen .mobile-thread-header {
+  flex: 0 0 auto;
+  min-height: 48px;
+  margin-bottom: 10px;
+}
+
+.mobile-thread-screen .mobile-thread-header h2 {
+  overflow: hidden;
+  max-width: 100%;
+  font-size: 20px;
+  line-height: 1.08;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-thread-screen .mobile-thread-header p {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.mobile-thread-screen .sms-pill {
+  flex: 0 0 auto;
+  width: 54px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.mobile-thread-scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 10px 2px 12px;
+  scrollbar-width: none;
+}
+
+.mobile-thread-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-thread-screen .pinned-note {
+  min-height: 0;
+  margin: 0 0 12px;
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.mobile-thread-screen .message-list {
+  gap: 8px;
+  min-height: 0;
+  padding: 0;
+  margin-top: auto;
+}
+
+.mobile-thread-screen .message {
+  width: fit-content;
+  max-width: 78%;
+  border-radius: 18px;
+  padding: 9px 12px;
+  box-shadow: none;
+  overflow-wrap: anywhere;
+}
+
+.mobile-thread-screen .message.mine {
+  border-radius: 18px 18px 6px 18px;
+  border-bottom-right-radius: 6px;
+}
+
+.mobile-thread-screen .message:not(.mine) {
+  border-radius: 18px 18px 18px 6px;
+}
+
+.mobile-thread-screen .message.announcement {
+  max-width: 78%;
+}
+
+.mobile-thread-screen .message.system {
+  align-self: center;
+  max-width: 92%;
+  border-radius: 14px;
+  padding: 8px 12px;
+  background: #fff;
+}
+
+.mobile-thread-screen .message-author {
+  font-size: 10px;
+}
+
+.mobile-thread-screen .message p {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.mobile-thread-screen .message time {
+  margin-top: 5px;
+  font-size: 9px;
+}
+
+.mobile-thread-screen .composer {
+  flex: 0 0 auto;
+  grid-template-columns: minmax(0, 1fr) 36px 42px;
+  gap: 8px;
+  margin: 10px 0 0;
+  border-radius: 22px;
+  padding: 7px;
+}
+
+.mobile-thread-screen .composer input {
+  height: 34px;
+  padding: 0 14px;
+  font-size: 12px;
+}
+
+.mobile-thread-screen .attachment-button {
+  width: 36px;
+  height: 34px;
+  border-radius: 16px;
+}
+
+.mobile-thread-screen .send-button {
+  width: 42px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: 17px;
+  font-size: 0;
+}
+
+.mobile-thread-screen .send-button svg {
+  width: 18px;
+  height: 18px;
 }
 
 .mobile-feature-card {

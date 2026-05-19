@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   Bell,
@@ -415,6 +415,12 @@ function DesktopLiveChat({
 
 function MobileLiveChat({ role, activeConversation, conversations, messages, draft, canBroadcast, onDraftChange, onSend, onSelectConversation }: SharedProps) {
   const [screen, setScreen] = useState<"list" | "thread">("list");
+  const threadScrollRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (screen !== "thread" || !threadScrollRef.current) return;
+    threadScrollRef.current.scrollTop = threadScrollRef.current.scrollHeight;
+  }, [screen, activeConversation.id, messages.length]);
 
   return (
     <article className="mobile-frame" aria-label="Mobile live chat preview">
@@ -462,7 +468,7 @@ function MobileLiveChat({ role, activeConversation, conversations, messages, dra
             </div>
           </>
         ) : (
-          <>
+          <div className="mobile-thread-screen">
             <div className="mobile-thread-header">
               <button onClick={() => setScreen("list")} aria-label="Back to chats">
                 <ChevronLeft size={24} />
@@ -474,9 +480,11 @@ function MobileLiveChat({ role, activeConversation, conversations, messages, dra
               {canBroadcast && <button className="sms-pill">SMS</button>}
             </div>
             {activeConversation.pinned && <PinnedNote note={activeConversation.pinned} />}
-            <MessageList messages={messages} />
+            <div className="mobile-thread-scroll" ref={threadScrollRef}>
+              <MessageList messages={messages} />
+            </div>
             <Composer value={draft} onChange={onDraftChange} onSend={onSend} />
-          </>
+          </div>
         )}
         <MobileNav active="Chat" />
       </div>
