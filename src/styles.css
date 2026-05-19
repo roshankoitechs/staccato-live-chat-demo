@@ -140,15 +140,15 @@ button {
 .desktop-frame {
   display: grid;
   width: 100%;
-  min-height: 760px;
-  grid-template-columns: 184px minmax(0, 1fr);
+  min-height: 768px;
+  grid-template-columns: 200px minmax(0, 1fr);
   border-radius: 18px;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  padding: 28px 16px;
+  padding: 28px 20px;
   background: #fbfafd;
 }
 
@@ -216,7 +216,7 @@ button {
 
 .desktop-content {
   min-width: 0;
-  padding: 28px 24px;
+  padding: 32px;
   background: var(--bg);
 }
 
@@ -279,11 +279,13 @@ button {
 
 .desktop-panels {
   display: grid;
-  grid-template-columns: 236px minmax(300px, 1fr) 166px;
-  gap: 16px;
+  grid-template-columns: minmax(280px, 300px) minmax(0, 1fr) minmax(184px, 200px);
+  gap: 20px;
+  min-width: 0;
 }
 
 .panel {
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--surface);
@@ -292,17 +294,17 @@ button {
 .conversation-panel,
 .thread-panel,
 .context-panel {
-  min-height: 610px;
+  min-height: 612px;
 }
 
 .conversation-panel,
 .context-panel {
-  padding: 18px;
+  padding: 24px;
 }
 
 .panel-title {
   margin: 0 0 18px;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1;
   font-weight: 950;
 }
@@ -370,13 +372,13 @@ button {
 .conversation-row {
   position: relative;
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-columns: 48px minmax(0, 1fr);
   align-items: center;
   width: 100%;
-  min-height: 76px;
+  min-height: 82px;
   border: 0;
   border-radius: 10px;
-  padding: 0 10px;
+  padding: 0 14px;
   background: transparent;
   text-align: left;
 }
@@ -391,8 +393,8 @@ button {
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #e4dfea;
 }
@@ -409,17 +411,31 @@ button {
 }
 
 .conversation-copy strong {
-  font-size: 14px;
+  overflow: hidden;
+  font-size: 15px;
   line-height: 1.08;
   font-weight: 950;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
 }
 
 .conversation-copy small,
 .conversation-meta small {
+  overflow: hidden;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 850;
   line-height: 1.15;
+  text-overflow: ellipsis;
+}
+
+.conversation-copy small {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
 }
 
 .conversation-row.active .conversation-copy small,
@@ -429,8 +445,8 @@ button {
 
 .conversation-meta {
   position: absolute;
-  top: 16px;
-  right: 10px;
+  top: 18px;
+  right: 12px;
   display: grid;
   justify-items: end;
   gap: 10px;
@@ -451,12 +467,12 @@ button {
   align-items: center;
   min-height: 74px;
   border-bottom: 1px solid var(--line);
-  padding: 0 20px;
+  padding: 0 28px;
 }
 
 .thread-header h3 {
   margin: 0;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 950;
 }
 
@@ -481,7 +497,7 @@ button {
 
 .pinned-note {
   min-height: 46px;
-  margin: 20px 20px 0;
+  margin: 22px 28px 0;
   border: 1px solid var(--yellow-line);
   border-radius: 8px;
   padding: 13px 18px;
@@ -496,11 +512,11 @@ button {
   flex-direction: column;
   gap: 18px;
   min-height: 350px;
-  padding: 24px 20px;
+  padding: 28px;
 }
 
 .message {
-  width: min(76%, 322px);
+  width: min(74%, 360px);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 14px 16px;
@@ -560,7 +576,7 @@ button {
   grid-template-columns: 1fr 38px auto;
   gap: 12px;
   align-items: center;
-  margin: 0 20px 20px;
+  margin: 0 28px 28px;
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 10px;
@@ -613,13 +629,15 @@ button {
 }
 
 .context-card strong {
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.1;
   font-weight: 950;
 }
 
 .context-card span {
   color: var(--muted);
   font-size: 13px;
+  line-height: 1.25;
   font-weight: 800;
 }
 
@@ -681,6 +699,7 @@ button {
   background: #111827;
   padding: 12px;
   width: min(390px, 100%);
+  margin: 0 auto;
 }
 
 .phone-shell {
@@ -787,6 +806,10 @@ button {
   min-height: 78px;
   border: 1px solid var(--line);
   background: var(--surface);
+}
+
+.conversation-row.compact .conversation-copy {
+  padding-right: 48px;
 }
 
 .mobile-nav {
